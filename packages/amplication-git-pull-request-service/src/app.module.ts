@@ -5,6 +5,7 @@ import { DiffModule } from "./diff/diff.module";
 import { PullRequestModule } from "./pull-request/pull-request.module";
 import { Logger } from "@amplication/util/logging";
 import { Env } from "./env";
+import { TracingModule } from "@amplication/util/nestjs/tracing";
 
 @Module({
   imports: [
@@ -15,6 +16,9 @@ import { Env } from "./env";
       envFilePath: [".env.local", ".env"],
     }),
     AmplicationLoggerModule.forRoot({
+      serviceName: Env.SERVICE_NAME,
+    }),
+    TracingModule.forRoot({
       serviceName: Env.SERVICE_NAME,
     }),
   ],
