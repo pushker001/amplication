@@ -20,8 +20,11 @@ describe.skip("GitFactory", () => {
         GitFactory.getProvider(
           {
             provider: EnumGitProvider.Github,
-            installationId: "123",
+            providerOrganizationProperties: {
+              installationId: "installationId",
+            },
           },
+          null,
           logger
         )
       ).toBe(github);
